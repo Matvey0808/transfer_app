@@ -5,62 +5,61 @@ class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
 
   static const String title = "TransferMe";
+  static const String assetPath = "assets/images/Component 1.svg";
+  static const Color colorBlue = Color(0xFF5063BF);
+
+  static const TextStyle kTitleStyle = TextStyle(
+    fontSize: 48,
+    fontWeight: FontWeight.bold,
+    color: colorBlue,
+  );
+
+  static TextStyle kSubtitle = TextStyle(
+    fontSize: 16,
+    color: Colors.blueGrey[400],
+  );
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 280),
-              child: SvgPicture.asset("assets/images/Component 1.svg"),
-            ),
-            Text(
-              "TransferMe",
-              style: TextStyle(
-                fontSize: 48,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF5063BF),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(),
-              child: Text(
-                "Your Best Money Transfer Partner",
-                style: TextStyle(fontSize: 13, color: Color(0xFF5063BF)),
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
+        children: [
+          Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 330),
-                  child: RichText(
-                    text: TextSpan(
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.blueGrey[400],
-                      ),
-                      children: [
-                        const TextSpan(text: "Secured by "),
-                        TextSpan(
-                          text: title,
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Color(0xFF5063BF),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                SvgPicture.asset(assetPath),
+                const SizedBox(height: 20),
+                Text("TransferMe", style: kTitleStyle),
+                const SizedBox(height: 8),
+                Text(
+                  "Your Best Money Transfer Partner",
+                  style: TextStyle(fontSize: 14, color: colorBlue),
                 ),
               ],
             ),
-          ],
-        ),
+          ),
+          Positioned(
+            bottom: 40,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: RichText(
+                text: TextSpan(
+                  style: kSubtitle,
+                  children: [
+                    const TextSpan(text: "Secured by "),
+                    TextSpan(
+                      text: title,
+                      style: TextStyle(fontSize: 16, color: colorBlue),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
