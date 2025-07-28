@@ -1,0 +1,18 @@
+{
+  // Настройки редактора
+  "editor.formatOnSave": true,
+  "editor.rulers": [
+    80
+  ], // Линия для 80 символов (стандарт Dart)
+  "editor.tabSize": 2, // 2 пробела вместо табов
+  "editor.insertSpaces": true,
+  // Dart/Flutter-специфичные настройки
+  "[dart]": {
+    "editor.defaultFormatter": "Dart-Code.dart-code",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit"
+    }
+  },
+}
